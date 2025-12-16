@@ -1,0 +1,1075 @@
+===FILE: robots.txt===
+User-agent: *
+Allow: /
+Disallow: /assets/
+Sitemap: https://www.causeandcraft.com/sitemap.xml
+===END: robots.txt===
+
+===FILE: sitemap.xml===
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://www.causeandcraft.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.causeandcraft.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.causeandcraft.com/en/" />
+  </url>
+  <url>
+    <loc>https://www.causeandcraft.com/fr/</loc>
+    <lastmod>2025-12-16</lastmod>
+  </url>
+  <url>
+    <loc>https://www.causeandcraft.com/en/</loc>
+    <lastmod>2025-12-16</lastmod>
+  </url>
+</urlset>
+===END: sitemap.xml===
+
+===FILE: assets/css/styles.css===
+:root {
+    /* Color Palette - WCAG AA/AAA Compliant */
+    --c-primary: #0a2342; /* Navy Blue - Text & Headers */
+    --c-accent: #d94e33; /* Terra Cotta - Primary CTA */
+    --c-secondary: #2ca58d; /* Teal - Data/Success */
+    --c-bg: #ffffff;
+    --c-bg-alt: #f4f6f8;
+    --c-border: #e1e4e8;
+    --c-text-light: #546b82;
+
+    /* Typography - System Stack for Performance */
+    --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --leading-tight: 1.2;
+    --leading-normal: 1.6;
+
+    /* Spacing */
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 2rem;
+    --space-xl: 4rem;
+    
+    /* Layout */
+    --container: 1200px;
+    --radius: 4px;
+}
+
+/* Reset & Base */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 100%; }
+body {
+    font-family: var(--font-main);
+    color: var(--c-primary);
+    line-height: var(--leading-normal);
+    background-color: var(--c-bg);
+}
+
+/* Typography */
+h1, h2, h3, h4 { line-height: var(--leading-tight); margin-bottom: var(--space-md); font-weight: 700; }
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.5rem); }
+p { margin-bottom: var(--space-md); max-width: 70ch; }
+a { color: var(--c-primary); text-decoration: none; transition: color 0.2s ease; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--c-accent); outline-offset: 2px; }
+
+/* Utilities */
+.container { max-width: var(--container); margin: 0 auto; padding: 0 var(--space-md); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.btn {
+    display: inline-flex; justify-content: center; align-items: center;
+    padding: 0.75rem 1.5rem; font-weight: 600; border-radius: var(--radius);
+    border: 2px solid transparent; cursor: pointer; transition: all 0.2s;
+}
+.btn-primary { background: var(--c-accent); color: white; }
+.btn-primary:hover { background: #b53b24; }
+.btn-outline { border-color: var(--c-primary); color: var(--c-primary); background: transparent; }
+.btn-outline:hover { background: var(--c-primary); color: white; }
+
+/* Header & Nav */
+header { border-bottom: 1px solid var(--c-border); position: sticky; top: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(5px); z-index: 100; }
+.nav-container { display: flex; justify-content: space-between; align-items: center; height: 80px; }
+.logo { font-weight: 800; font-size: 1.25rem; letter-spacing: -0.05em; display: flex; align-items: center; gap: 10px; }
+.nav-menu { display: flex; gap: var(--space-lg); list-style: none; }
+.lang-switch { font-size: 0.875rem; font-weight: 600; text-transform: uppercase; border-left: 1px solid var(--c-border); padding-left: var(--space-md); }
+
+/* Mobile Menu */
+.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; }
+@media (max-width: 768px) {
+    .menu-toggle { display: block; }
+    .nav-menu {
+        position: fixed; top: 80px; left: 0; right: 0; background: white;
+        flex-direction: column; padding: var(--space-lg); border-bottom: 1px solid var(--c-border);
+        transform: translateY(-150%); transition: transform 0.3s ease-in-out;
+    }
+    .nav-menu.active { transform: translateY(0); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+    .lang-switch { border: none; padding: 0; margin-top: var(--space-md); }
+}
+
+/* Sections */
+section { padding: var(--space-xl) 0; }
+.bg-alt { background-color: var(--c-bg-alt); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center; min-height: 80vh; }
+.hero-content { display: flex; flex-direction: column; align-items: flex-start; }
+.hero-visual { display: flex; justify-content: center; align-items: center; }
+.cta-group { display: flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap; }
+@media (max-width: 768px) { .hero { grid-template-columns: 1fr; text-align: center; } .hero-content { align-items: center; } .cta-group { justify-content: center; } }
+
+/* Pricing Table */
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); margin-top: var(--space-lg); }
+.price-card { background: white; border: 1px solid var(--c-border); padding: var(--space-lg); border-radius: var(--radius); position: relative; }
+.price-card.featured { border: 2px solid var(--c-accent); box-shadow: 0 10px 30px rgba(0,0,0,0.1); transform: scale(1.02); }
+.price-tag { font-size: 2.5rem; font-weight: 700; margin: var(--space-md) 0; display: block; }
+
+/* Contact Form */
+.form-group { margin-bottom: var(--space-md); }
+label { display: block; margin-bottom: 0.5rem; font-weight: 600; font-size: 0.9rem; }
+input, textarea, select { width: 100%; padding: 0.75rem; border: 1px solid var(--c-border); border-radius: var(--radius); font-family: inherit; }
+input:invalid, textarea:invalid { border-color: #e63946; }
+.error-msg { color: #e63946; font-size: 0.8rem; margin-top: 0.25rem; display: none; }
+.form-success { background: #d1fae5; color: #065f46; padding: var(--space-md); border-radius: var(--radius); display: none; margin-bottom: var(--space-md); border: 1px solid #6ee7b7; }
+
+/* Calculator */
+.calculator-box { background: var(--c-bg-alt); padding: var(--space-lg); border-radius: var(--radius); border: 1px solid var(--c-border); }
+.calc-result { font-size: 2rem; font-weight: 800; color: var(--c-secondary); margin-top: var(--space-md); }
+
+/* SVG Animation */
+.svg-flow path { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 3s linear forwards; }
+@keyframes dash { to { stroke-dashoffset: 0; } }
+.svg-node { opacity: 0; animation: fadeIn 0.5s ease-out forwards; }
+.svg-node:nth-child(1) { animation-delay: 0s; }
+.svg-node:nth-child(2) { animation-delay: 1s; }
+.svg-node:nth-child(3) { animation-delay: 2s; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Footer */
+footer { background: var(--c-primary); color: white; padding: var(--space-xl) 0; margin-top: auto; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-lg); }
+footer a { color: #a0aec0; }
+footer a:hover { color: white; }
+
+/* Cookie Banner */
+#cookie-banner {
+    position: fixed; bottom: 0; left: 0; right: 0; background: white;
+    padding: var(--space-md); border-top: 1px solid var(--c-border);
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.05); z-index: 1000;
+    display: none; justify-content: center; align-items: center; gap: var(--space-md); flex-wrap: wrap;
+}
+===END: assets/css/styles.css===
+
+===FILE: assets/js/app.js===
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- 1. Mobile Menu ---
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+            menuToggle.setAttribute('aria-expanded', !isExpanded);
+            navMenu.classList.toggle('active');
+        });
+    }
+
+    // --- 2. Cookie Consent (GDPR) ---
+    const cookieBanner = document.getElementById('cookie-banner');
+    const acceptCookies = document.getElementById('accept-cookies');
+    
+    if (cookieBanner && !localStorage.getItem('cc_consent')) {
+        cookieBanner.style.display = 'flex';
+        acceptCookies.addEventListener('click', () => {
+            localStorage.setItem('cc_consent', 'true');
+            cookieBanner.style.display = 'none';
+        });
+    }
+
+    // --- 3. ROI Calculator ---
+    const calcForm = document.getElementById('roi-calculator');
+    const calcResult = document.getElementById('roi-result');
+    const calcOutput = document.getElementById('roi-output');
+
+    if (calcForm) {
+        calcForm.addEventListener('input', () => {
+            const donors = parseFloat(document.getElementById('donors').value) || 0;
+            const avgDonation = parseFloat(document.getElementById('avg-donation').value) || 0;
+            const campaigns = parseFloat(document.getElementById('campaigns').value) || 0;
+            
+            // Logic: Resonance improves targeting by 18% avg in test data
+            const baseRevenue = donors * avgDonation * campaigns;
+            const uplift = baseRevenue * 0.18; 
+            
+            calcResult.textContent = new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(uplift);
+            calcOutput.style.display = 'block';
+        });
+    }
+
+    // --- 4. Contact Form Validation ---
+    const contactForm = document.getElementById('contact-form');
+    const successMsg = document.querySelector('.form-success');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            let isValid = true;
+            
+            // Simple constraint validation visualization
+            const inputs = contactForm.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                const errorSpan = document.getElementById(`${input.id}-error`);
+                if (!input.checkValidity()) {
+                    isValid = false;
+                    input.setAttribute('aria-invalid', 'true');
+                    if(errorSpan) {
+                        errorSpan.style.display = 'block';
+                        errorSpan.textContent = input.validationMessage;
+                    }
+                } else {
+                    input.setAttribute('aria-invalid', 'false');
+                    if(errorSpan) errorSpan.style.display = 'none';
+                }
+            });
+
+            if (isValid) {
+                // Simulation of API call
+                const btn = contactForm.querySelector('button[type="submit"]');
+                const originalText = btn.textContent;
+                btn.disabled = true;
+                btn.textContent = 'Envoi...';
+
+                setTimeout(() => {
+                    contactForm.reset();
+                    btn.disabled = false;
+                    btn.textContent = originalText;
+                    successMsg.style.display = 'block';
+                    successMsg.scrollIntoView({ behavior: 'smooth' });
+                }, 1500);
+            }
+        });
+    }
+});
+===END: assets/js/app.js===
+
+===FILE: index.html===
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cause & Craft | Global Data Intelligence for NGOs</title>
+    <meta name="description" content="Cause & Craft helps NGOs optimize fundraising through data, AI, and behavioral psychology. Select your region.">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body style="display: flex; height: 100vh; align-items: center; justify-content: center; background: #0a2342; color: white;">
+    <main style="text-align: center; padding: 20px;">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" style="margin-bottom: 20px;">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+        <h1 style="margin-bottom: 30px; font-size: 2rem;">Cause & Craft</h1>
+        <p style="margin-bottom: 40px; color: #a0aec0;">Select your region / Choisissez votre région</p>
+        <div style="display: flex; gap: 20px; justify-content: center;">
+            <a href="/fr/" class="btn btn-primary" style="background: white; color: #0a2342; min-width: 140px;">Français</a>
+            <a href="/en/" class="btn btn-outline" style="border-color: white; color: white; min-width: 140px;">English</a>
+        </div>
+    </main>
+</body>
+</html>
+===END: index.html===
+
+===FILE: fr/index.html===
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cause & Craft | Intelligence de Données pour ONG</title>
+    <meta name="description" content="Optimisez votre collecte de fonds grâce à Résonance, notre IA éthique. Audit, stratégie et segmentation pour les grandes associations.">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="alternate" hreflang="en" href="https://www.causeandcraft.com/en/" />
+    <link rel="alternate" hreflang="fr" href="https://www.causeandcraft.com/fr/" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Cause & Craft",
+      "url": "https://www.causeandcraft.com",
+      "logo": "https://www.causeandcraft.com/assets/logo.png",
+      "sameAs": ["https://linkedin.com/company/causeandcraft"]
+    }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                CAUSE & CRAFT
+            </a>
+            <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="decisions.html">Méthodologie</a></li>
+                    <li><a href="tarifs.html">Tarifs</a></li>
+                    <li><a href="contact.html" class="btn btn-primary">Audit Gratuit</a></li>
+                    <li class="lang-switch"><a href="../en/index.html">EN</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-content">
+                <h1>Transformez vos données en impact social.</h1>
+                <p>Nous aidons les ONG à sécuriser leur avenir financier grâce à l'analyse prédictive et la psychologie comportementale, dans le strict respect du RGPD.</p>
+                <div class="cta-group">
+                    <a href="solutions.html" class="btn btn-primary">Découvrir Résonance</a>
+                    <a href="contact.html" class="btn btn-outline">Parler à un expert</a>
+                </div>
+            </div>
+            <div class="hero-visual" role="img" aria-label="Schéma illustrant le flux de données vers l'action">
+                <!-- Signature Element A: SVG Animation -->
+                <svg class="svg-flow" width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Data Node -->
+                    <g class="svg-node">
+                        <circle cx="50" cy="150" r="40" fill="#0a2342" />
+                        <text x="50" y="155" text-anchor="middle" fill="white" font-size="12">DATA</text>
+                    </g>
+                    <!-- Analysis Node -->
+                    <g class="svg-node">
+                        <rect x="150" y="110" width="100" height="80" rx="4" fill="#2ca58d" />
+                        <text x="200" y="155" text-anchor="middle" fill="white" font-size="12">IA RÉSONANCE</text>
+                    </g>
+                    <!-- Action Node -->
+                    <g class="svg-node">
+                        <polygon points="350,110 390,150 350,190 310,150" fill="#d94e33" />
+                        <text x="350" y="155" text-anchor="middle" fill="white" font-size="12">IMPACT</text>
+                    </g>
+                    <!-- Connectors -->
+                    <path d="M90 150 H 150" stroke="#e1e4e8" stroke-width="2" />
+                    <path d="M250 150 H 310" stroke="#e1e4e8" stroke-width="2" />
+                </svg>
+            </div>
+        </section>
+
+        <section class="bg-alt">
+            <div class="container">
+                <p style="text-align: center; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 2rem;">Ils nous font confiance</p>
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; opacity: 0.6;">
+                    <span style="font-weight: 700; font-size: 1.5rem;">GLOBAL ACTION</span>
+                    <span style="font-weight: 700; font-size: 1.5rem;">ECO-SPHERE</span>
+                    <span style="font-weight: 700; font-size: 1.5rem;">MED-FRONTIER</span>
+                    <span style="font-weight: 700; font-size: 1.5rem;">EDUCATE NOW</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>Pourquoi Résonance ?</h2>
+            <div class="pricing-grid" style="margin-top: 2rem;">
+                <div>
+                    <h3>Précision Chirurgicale</h3>
+                    <p>Cessez de solliciter votre base à l'aveugle. Nos algorithmes identifient les donateurs prêts à s'engager maintenant.</p>
+                </div>
+                <div>
+                    <h3>Conformité Totale</h3>
+                    <p>Une architecture "Privacy by Design". Vos données ne quittent jamais l'Europe et sont anonymisées par défaut.</p>
+                </div>
+                <div>
+                    <h3>ROI Mesurable</h3>
+                    <p>Suivez chaque euro investi. Nos clients constatent une augmentation moyenne de 18% de la collecte dès le premier trimestre.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container">
+        <div class="footer-grid">
+            <div>
+                <h3>Cause & Craft</h3>
+                <p>Paris -  London -  New York</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <ul style="list-style: none;">
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="decisions.html">Méthodologie</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Légal</h4>
+                <ul style="list-style: none;">
+                    <li><a href="mentions-legales.html">Mentions Légales</a></li>
+                    <li><a href="mentions-legales.html#privacy">Politique de confidentialité</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem;">
+            &copy; 2025 Cause & Craft. Tous droits réservés.
+        </div>
+    </footer>
+
+    <div id="cookie-banner">
+        <p>Nous utilisons des cookies strictement nécessaires au fonctionnement du site. Aucun traçage publicitaire tiers.</p>
+        <button id="accept-cookies" class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.8rem;">Accepter</button>
+    </div>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
+===END: fr/index.html===
+
+===FILE: fr/solutions.html===
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions & Calculateur ROI | Cause & Craft</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">CAUSE & CRAFT</a>
+            <button class="menu-toggle" aria-label="Menu">☰</button>
+            <nav><ul class="nav-menu">
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="decisions.html">Méthodologie</a></li>
+                <li><a href="tarifs.html">Tarifs</a></li>
+                <li><a href="contact.html" class="btn btn-primary">Audit Gratuit</a></li>
+            </ul></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h1>La Suite Résonance</h1>
+            <p class="lead">Une plateforme SaaS unifiée pour orchestrer vos campagnes de levée de fonds.</p>
+            <div class="pricing-grid">
+                <article class="price-card">
+                    <h3>Audit de Base</h3>
+                    <p>Nettoyage et déduplication de votre CRM. Analyse de la santé de votre fichier donateur.</p>
+                </article>
+                <article class="price-card">
+                    <h3>Scoring Prédictif</h3>
+                    <p>Algorithmes de propension au don (RFM augmenté). Identification des profils "Grands Donateurs".</p>
+                </article>
+                <article class="price-card">
+                    <h3>Optimisation du Parcours</h3>
+                    <p>A/B testing automatisé sur vos pages de dons et séquences d'emails transactionnels.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="bg-alt" style="border-radius: 8px; padding: 2rem;">
+            <h2>Simulateur de Potentiel</h2>
+            <p>Estimez le gain annuel généré par l'optimisation de vos campagnes existantes.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; align-items: start;">
+                <form id="roi-calculator" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="donors">Nombre de donateurs actifs</label>
+                        <input type="number" id="donors" placeholder="Ex: 5000" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="avg-donation">Don moyen (€)</label>
+                        <input type="number" id="avg-donation" placeholder="Ex: 45" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="campaigns">Campagnes par an</label>
+                        <input type="number" id="campaigns" placeholder="Ex: 4" min="1" max="52">
+                    </div>
+                </form>
+
+                <div class="calculator-box" id="roi-output" style="display: none;">
+                    <h3>Gain annuel estimé*</h3>
+                    <div id="roi-result" class="calc-result">0 €</div>
+                    <p style="font-size: 0.8rem; margin-top: 1rem; color: #666;">
+                        *Basé sur une augmentation moyenne de 18% observée chez nos clients Mid-Market après 12 mois d'utilisation de Résonance Standard.
+                    </p>
+                    <a href="tarifs.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">Voir les offres</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="container" style="margin-top: 4rem; padding: 2rem 0;"><p>&copy; 2025 Cause & Craft</p></footer>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
+===END: fr/solutions.html===
+
+===FILE: fr/decisions.html===
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Méthodologie & Choix Techniques | Cause & Craft</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">CAUSE & CRAFT</a>
+            <nav><ul class="nav-menu"><li><a href="contact.html" class="btn btn-primary">Contact</a></li></ul></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h1>Note de Conception Technique</h1>
+            <p>Ce document détaille les choix architecturaux réalisés pour garantir la performance, l'accessibilité et la pérennité du site Cause & Craft.</p>
+        </section>
+
+        <section>
+            <article style="margin-bottom: 3rem;">
+                <h3>1. Architecture "Flat File" & Performance</h3>
+                <p>Le site est construit en <strong>HTML5/CSS3/JS Vanilla</strong> sans aucun framework (React, Vue) ni générateur statique complexe.</p>
+                <ul>
+                    <li><strong>Vitesse :</strong> L'absence de temps de compilation JS côté client garantit un Time to Interactive (TTI) quasi-instantané.</li>
+                    <li><strong>Hébergement :</strong> Compatibilité native avec GitHub Pages sans build step (CI/CD simplifié).</li>
+                    <li><strong>Dépendances Zéro :</strong> Pas de CDN tiers. Les polices utilisent la "System Stack" (-apple-system, Segoe UI) pour éliminer le CLS (Cumulative Layout Shift) et les requêtes HTTP bloquantes.</li>
+                </ul>
+            </article>
+
+            <article style="margin-bottom: 3rem;">
+                <h3>2. Accessibilité (WCAG 2.2 AA)</h3>
+                <p>L'accessibilité n'est pas une surcouche mais un fondement du code :</p>
+                <ul>
+                    <li>Utilisation stricte de balises sémantiques (nav, main, article, button).</li>
+                    <li>Gestion du focus clavier visible (`outline` personnalisé).</li>
+                    <li>Contraste des couleurs vérifié (> 4.5:1 pour le texte normal).</li>
+                    <li>Attributs ARIA uniquement là où le HTML natif ne suffit pas (ex: menu mobile `aria-expanded`).</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>3. Conformité RGPD</h3>
+                <p>Respect du principe "Privacy by Design". Le bandeau de cookies est géré en JS natif via `localStorage`. Aucune requête n'est envoyée à des trackers tiers (Google Analytics, Facebook Pixel) dans cette version de démonstration.</p>
+            </article>
+        </section>
+    </main>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
+===END: fr/decisions.html===
+
+===FILE: fr/tarifs.html===
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tarifs | Cause & Craft</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">CAUSE & CRAFT</a>
+            <nav><ul class="nav-menu"><li><a href="contact.html" class="btn btn-primary">Contact</a></li></ul></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section style="text-align: center;">
+            <h1>Investissez dans votre croissance</h1>
+            <p>Des tarifs transparents, adaptés à la taille de votre base donateurs.</p>
+        </section>
+
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Starter</h3>
+                <span class="price-tag">450€ <small style="font-size: 1rem; font-weight: 400;">/mois</small></span>
+                <p>Pour les associations locales.</p>
+                <ul style="margin: 1.5rem 0 1.5rem 1rem;">
+                    <li>Jusqu'à 5,000 contacts</li>
+                    <li>Audit données basique</li>
+                    <li>Support email</li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline" style="width: 100%">Choisir</a>
+            </div>
+
+            <div class="price-card featured">
+                <div style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: #d94e33; color: white; padding: 4px 12px; font-size: 0.8rem; border-radius: 12px; font-weight: bold;">POPULAIRE</div>
+                <h3>Résonance Standard</h3>
+                <span class="price-tag">1 200€ <small style="font-size: 1rem; font-weight: 400;">/mois</small></span>
+                <p>Pour les ONG en croissance.</p>
+                <ul style="margin: 1.5rem 0 1.5rem 1rem;">
+                    <li>Jusqu'à 50,000 contacts</li>
+                    <li>Scoring prédictif IA</li>
+                    <li>Tableaux de bord ROI</li>
+                    <li>Support prioritaire</li>
+                </ul>
+                <a href="contact.html" class="btn btn-primary" style="width: 100%">Commencer</a>
+            </div>
+
+            <div class="price-card">
+                <h3>Enterprise</h3>
+                <span class="price-tag">Sur devis</span>
+                <p>Fédérations et organisations internationales.</p>
+                <ul style="margin: 1.5rem 0 1.5rem 1rem;">
+                    <li>Volume illimité</li>
+                    <li>API dédiée</li>
+                    <li>Consultant dédié</li>
+                    <li>Hébergement "On-Premise" possible</li>
+                </ul>
+                <a href="contact.html" class="btn btn-outline" style="width: 100%">Nous contacter</a>
+            </div>
+        </div>
+    </main>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
+===END: fr/tarifs.html===
+
+===FILE: fr/contact.html===
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact & Audit | Cause & Craft</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">CAUSE & CRAFT</a>
+            <nav><ul class="nav-menu">
+                <li><a href="index.html">Accueil</a></li>
+            </ul></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2rem;">
+            <section>
+                <h1>Parlons de vos objectifs</h1>
+                <p>Remplissez ce formulaire pour planifier un audit gratuit de 30 minutes de votre stratégie de collecte actuelle.</p>
+                
+                <div style="margin-top: 2rem;">
+                    <h3>Nos Bureaux</h3>
+                    <address style="font-style: normal; line-height: 1.8;">
+                        <strong>Paris (Siège)</strong><br>
+                        12 Avenue de l'Opéra<br>
+                        75001 Paris, France<br>
+                        <a href="mailto:paris@causeandcraft.com">paris@causeandcraft.com</a>
+                    </address>
+                </div>
+            </section>
+
+            <section class="bg-alt" style="padding: 2rem; border-radius: 8px;">
+                <div class="form-success" role="alert">
+                    <strong>Message envoyé !</strong> Notre équipe vous recontactera sous 24h.
+                </div>
+
+                <form id="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">Nom complet *</label>
+                        <input type="text" id="name" name="name" required minlength="2" aria-required="true">
+                        <span class="error-msg" id="name-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email professionnel *</label>
+                        <input type="email" id="email" name="email" required aria-required="true">
+                        <span class="error-msg" id="email-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="org">Organisation / ONG</label>
+                        <input type="text" id="org" name="org">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="4" required minlength="10" aria-required="true"></textarea>
+                        <span class="error-msg" id="message-error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="font-weight: normal; font-size: 0.8rem;">
+                            <input type="checkbox" required style="width: auto; margin-right: 10px;">
+                            J'accepte que mes données soient traitées pour la demande de contact.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer la demande</button>
+                </form>
+            </section>
+        </div>
+    </main>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
+===END: fr/contact.html===
+
+===FILE: fr/mentions-legales.html===
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mentions Légales | Cause & Craft</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Mentions Légales</h1>
+        <section>
+            <h3>Éditeur</h3>
+            <p>Cause & Craft SAS au capital de 50 000€.<br>RCS Paris B 123 456 789.<br>Siège : 12 Avenue de l'Opéra, 75001 Paris.</p>
+            
+            <h3>Hébergement</h3>
+            <p>GitHub Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, USA.</p>
+            
+            <h3 id="privacy">Données Personnelles (RGPD)</h3>
+            <p>Conformément au Règlement Général sur la Protection des Données, vous disposez d'un droit d'accès, de rectification et de suppression des données vous concernant. Pour exercer ce droit, contactez dpo@causeandcraft.com.</p>
+        </section>
+        <a href="index.html" class="btn btn-outline">Retour à l'accueil</a>
+    </main>
+</body>
+</html>
+===END: fr/mentions-legales.html===
+
+===FILE: en/index.html===
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cause & Craft | Data Intelligence for NGOs</title>
+    <meta name="description" content="Scale your fundraising with Resonance, our ethical AI platform. Predictive analytics and behavioral psychology for global non-profits.">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="alternate" hreflang="fr" href="https://www.causeandcraft.com/fr/" />
+    <link rel="alternate" hreflang="en" href="https://www.causeandcraft.com/en/" />
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                CAUSE & CRAFT
+            </a>
+            <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">☰</button>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="methodology.html">Methodology</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contact.html" class="btn btn-primary">Free Audit</a></li>
+                    <li class="lang-switch"><a href="../fr/index.html">FR</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero container">
+            <div class="hero-content">
+                <h1>Turn your data into social impact.</h1>
+                <p>We help NGOs secure their financial future through predictive analytics and behavioral psychology, with strict GDPR compliance.</p>
+                <div class="cta-group">
+                    <a href="solutions.html" class="btn btn-primary">Discover Resonance</a>
+                    <a href="contact.html" class="btn btn-outline">Talk to an expert</a>
+                </div>
+            </div>
+            <div class="hero-visual" role="img" aria-label="Diagram showing data flow to action">
+                 <svg class="svg-flow" width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g class="svg-node">
+                        <circle cx="50" cy="150" r="40" fill="#0a2342" />
+                        <text x="50" y="155" text-anchor="middle" fill="white" font-size="12">DATA</text>
+                    </g>
+                    <g class="svg-node">
+                        <rect x="150" y="110" width="100" height="80" rx="4" fill="#2ca58d" />
+                        <text x="200" y="155" text-anchor="middle" fill="white" font-size="12">AI CORE</text>
+                    </g>
+                    <g class="svg-node">
+                        <polygon points="350,110 390,150 350,190 310,150" fill="#d94e33" />
+                        <text x="350" y="155" text-anchor="middle" fill="white" font-size="12">IMPACT</text>
+                    </g>
+                    <path d="M90 150 H 150" stroke="#e1e4e8" stroke-width="2" />
+                    <path d="M250 150 H 310" stroke="#e1e4e8" stroke-width="2" />
+                </svg>
+            </div>
+        </section>
+
+        <section class="bg-alt">
+            <div class="container">
+                <p style="text-align: center; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 2rem;">Trusted Partners</p>
+                <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem; opacity: 0.6;">
+                    <span style="font-weight: 700; font-size: 1.5rem;">GLOBAL ACTION</span>
+                    <span style="font-weight: 700; font-size: 1.5rem;">ECO-SPHERE</span>
+                    <span style="font-weight: 700; font-size: 1.5rem;">MED-FRONTIER</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="container">
+            <h2>Why Resonance?</h2>
+            <div class="pricing-grid" style="margin-top: 2rem;">
+                <div>
+                    <h3>Surgical Precision</h3>
+                    <p>Stop soliciting your base blindly. Our algorithms identify donors ready to engage now.</p>
+                </div>
+                <div>
+                    <h3>Total Compliance</h3>
+                    <p>"Privacy by Design" architecture. Your data is anonymized by default and handled ethically.</p>
+                </div>
+                <div>
+                    <h3>Measurable ROI</h3>
+                    <p>Track every dollar. Our clients see an average 18% increase in fundraising in Q1.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="container">
+        <div class="footer-grid">
+            <div>
+                <h3>Cause & Craft</h3>
+                <p>Paris -  London -  New York</p>
+            </div>
+            <div>
+                <h4>Navigation</h4>
+                <ul style="list-style: none;">
+                    <li><a href="solutions.html">Solutions</a></li>
+                    <li><a href="methodology.html">Methodology</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul style="list-style: none;">
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem;">
+            &copy; 2025 Cause & Craft. All rights reserved.
+        </div>
+    </footer>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
+===END: en/index.html===
+
+===FILE: en/solutions.html===
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions & ROI Calculator | Cause & Craft</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">CAUSE & CRAFT</a>
+            <button class="menu-toggle" aria-label="Menu">☰</button>
+            <nav><ul class="nav-menu">
+                <li><a href="solutions.html">Solutions</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html" class="btn btn-primary">Free Audit</a></li>
+            </ul></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h1>The Resonance Suite</h1>
+            <p class="lead">A unified SaaS platform to orchestrate your fundraising campaigns.</p>
+            <div class="pricing-grid">
+                <article class="price-card">
+                    <h3>Data Audit</h3>
+                    <p>CRM cleaning and deduplication. Analysis of your donor file health.</p>
+                </article>
+                <article class="price-card">
+                    <h3>Predictive Scoring</h3>
+                    <p>Propensity algorithms (Augmented RFM). Identification of "Major Donor" profiles.</p>
+                </article>
+                <article class="price-card">
+                    <h3>Journey Optimization</h3>
+                    <p>Automated A/B testing on your donation pages and transactional email sequences.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="bg-alt" style="border-radius: 8px; padding: 2rem;">
+            <h2>Potential Simulator</h2>
+            <p>Estimate the annual gain generated by optimizing your existing campaigns.</p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; align-items: start;">
+                <form id="roi-calculator" onsubmit="return false;">
+                    <div class="form-group">
+                        <label for="donors">Active Donors</label>
+                        <input type="number" id="donors" placeholder="Ex: 5000" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="avg-donation">Average Donation (€)</label>
+                        <input type="number" id="avg-donation" placeholder="Ex: 45" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="campaigns">Campaigns per Year</label>
+                        <input type="number" id="campaigns" placeholder="Ex: 4" min="1" max="52">
+                    </div>
+                </form>
+
+                <div class="calculator-box" id="roi-output" style="display: none;">
+                    <h3>Estimated Annual Uplift*</h3>
+                    <div id="roi-result" class="calc-result">0 €</div>
+                    <p style="font-size: 0.8rem; margin-top: 1rem; color: #666;">
+                        *Based on an 18% average increase observed with our Mid-Market clients after 12 months.
+                    </p>
+                    <a href="pricing.html" class="btn btn-primary" style="margin-top: 1rem; width: 100%;">View Plans</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
+===END: en/solutions.html===
+
+===FILE: en/methodology.html===
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology | Cause & Craft</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">CAUSE & CRAFT</a>
+            <nav><ul class="nav-menu"><li><a href="contact.html" class="btn btn-primary">Contact</a></li></ul></nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section>
+            <h1>Technical Design Decision</h1>
+            <p>This document details the architectural choices made to ensure performance, accessibility, and longevity.</p>
+        </section>
+        <section>
+            <article style="margin-bottom: 3rem;">
+                <h3>1. Flat File Architecture</h3>
+                <p>Built with Vanilla HTML5/CSS3/JS. No frameworks. Ensures instant TTI (Time to Interactive) and easy hosting on GitHub Pages.</p>
+            </article>
+            <article>
+                <h3>2. Accessibility & Privacy</h3>
+                <p>WCAG 2.2 AA compliant. No external trackers. Privacy by Design.</p>
+            </article>
+        </section>
+    </main>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
+===END: en/methodology.html===
+
+===FILE: en/pricing.html===
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing | Cause & Craft</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">CAUSE & CRAFT</a>
+            <nav><ul class="nav-menu"><li><a href="contact.html" class="btn btn-primary">Contact</a></li></ul></nav>
+        </div>
+    </header>
+    <main class="container">
+        <section style="text-align: center;"><h1>Invest in Growth</h1></section>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Starter</h3>
+                <span class="price-tag">€450 <small>/mo</small></span>
+                <p>For local associations.</p>
+                <a href="contact.html" class="btn btn-outline" style="width: 100%">Select</a>
+            </div>
+            <div class="price-card featured">
+                <h3>Standard</h3>
+                <span class="price-tag">€1,200 <small>/mo</small></span>
+                <p>For growing NGOs.</p>
+                <a href="contact.html" class="btn btn-primary" style="width: 100%">Start</a>
+            </div>
+             <div class="price-card">
+                <h3>Enterprise</h3>
+                <span class="price-tag">Custom</span>
+                <p>Global Orgs.</p>
+                <a href="contact.html" class="btn btn-outline" style="width: 100%">Contact Us</a>
+            </div>
+        </div>
+    </main>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
+===END: en/pricing.html===
+
+===FILE: en/contact.html===
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Cause & Craft</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <a href="index.html" class="logo">CAUSE & CRAFT</a>
+            <nav><ul class="nav-menu"><li><a href="index.html">Home</a></li></ul></nav>
+        </div>
+    </header>
+    <main class="container">
+        <section>
+            <h1>Let's talk</h1>
+             <div class="form-success" role="alert"><strong>Message sent!</strong></div>
+             <form id="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-msg" id="email-error"></span>
+                </div>
+                 <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" name="message" rows="4" required minlength="10"></textarea>
+                    <span class="error-msg" id="message-error"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Request</button>
+            </form>
+        </section>
+    </main>
+    <script src="../assets/js/app.js"></script>
+</body>
+</html>
+===END: en/contact.html===
+
+===FILE: en/privacy.html===
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Privacy Policy | Cause & Craft</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <main class="container">
+        <h1>Privacy Policy</h1>
+        <section>
+            <p>Cause & Craft complies with GDPR. To exercise your rights, contact dpo@causeandcraft.com.</p>
+        </section>
+        <a href="index.html" class="btn btn-outline">Back Home</a>
+    </main>
+</body>
+</html>
+===END: en/privacy.html===
